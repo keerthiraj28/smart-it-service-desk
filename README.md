@@ -55,6 +55,7 @@ Required variables:
 - `DB_URL`
 - `DB_USERNAME`
 - `DB_PASSWORD`
+
 You can see the expected format in:
 `src/main/resources/application.properties.example`
 
