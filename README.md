@@ -40,37 +40,57 @@ A backend service desk ticketing system built using **Spring Boot**, **MySQL**, 
 ### Steps
 
 1. Clone the repository
-```bash
+```http
 git clone https://github.com/<your-username>/smart-it-service-desk.git
 ```
 
 2. Create a MySQL database
-```bash
+```http
 CREATE DATABASE ticketing_system;
 ```
 
-3. Update database configuration
-Open src/main/resources/application.properties and update:
-```bash
-spring.datasource.url=jdbc:mysql://localhost:3306/ticketing_system
-spring.datasource.username=your_db_username
-spring.datasource.password=your_db_password
+3. Configure database credentials **(Environment Variables)**
+This project uses **environment variables** for database configuration.
+Required variables:
+- `DB_URL`
+- `DB_USERNAME`
+- `DB_PASSWORD`
+You can see the expected format in:
+`src/main/resources/application.properties.example`
+
+### Option A: Using IntelliJ (Recommended)
+1. Go to Run → Edit Configurations
+2. Select `TicketingSystemApplication`
+3. Add environment variables:
+```http
+DB_URL=jdbc:mysql://localhost:3306/ticketing_system
+DB_USERNAME=your_db_username
+DB_PASSWORD=your_db_password
 ```
+4. Click Apply → OK
+
+### Option B: Using Command Line (Windows)
+```http
+setx DB_URL jdbc:mysql://localhost:3306/ticketing_system
+setx DB_USERNAME your_db_username
+setx DB_PASSWORD your_db_password
+```
+Restart **IntelliJ** after running these commands.
 
 4. Run the application
-```bash
+```http
 ./mvnw spring-boot:run
 ```
-or run TicketingSystemApplication directly from IntelliJ.
+or run `TicketingSystemApplication` directly from **IntelliJ.**
 
 5. Access the application
 The server will start on:
-```bash
+```http
 http://localhost:8080
 ```
 
 6. Test APIs using Postman
-Use the endpoints listed in the API Endpoints section to create and manage tickets.
+Use the endpoints listed in the **API Endpoints** section to create and manage tickets.
 
 ---
 
