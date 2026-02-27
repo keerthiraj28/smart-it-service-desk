@@ -1,9 +1,12 @@
 package com.servicedesk.ticketing.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
 @Entity
+@Data
 @Table(name = "ticket_comments")
 public class TicketComment {
 
@@ -30,37 +33,4 @@ public class TicketComment {
         this.createdAt = LocalDateTime.now();
     }
 
-    // Getters & Setters
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public Ticket getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
-    }
-
-    public User getCommentedBy() {
-        return commentedBy;
-    }
-
-    public void setCommentedBy(User commentedBy) {
-        this.commentedBy = commentedBy;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
 }

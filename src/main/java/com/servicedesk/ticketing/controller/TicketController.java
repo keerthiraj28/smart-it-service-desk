@@ -9,6 +9,8 @@ import com.servicedesk.ticketing.repository.TicketRepository;
 import com.servicedesk.ticketing.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/tickets")
 public class TicketController {
@@ -43,13 +45,13 @@ public class TicketController {
 
     // Get all tickets
     @GetMapping("/all")
-    public java.util.List<Ticket> getAllTickets() {
+    public List<Ticket> getAllTickets() {
         return ticketRepository.findAll();
     }
 
     // Get tickets created by a user
     @GetMapping("/user/{userId}")
-    public java.util.List<Ticket> getTicketsByUser(@PathVariable Long userId) {
+    public List<Ticket> getTicketsByUser(@PathVariable Long userId) {
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
@@ -112,7 +114,7 @@ public class TicketController {
     }
 
     @GetMapping("/{ticketId}/comments")
-    public java.util.List<TicketComment> getComments(@PathVariable Long ticketId) {
+    public List<TicketComment> getComments(@PathVariable Long ticketId) {
 
         Ticket ticket = ticketRepository.findById(ticketId)
                 .orElseThrow(() -> new ResourceNotFoundException("Ticket not found"));
